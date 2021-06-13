@@ -10,6 +10,10 @@ header{
     vertical-align: middle;  
 }
 
+header a{
+    text-decoration: none;
+}
+
 #logo{
     display: flex;
     justify-content: center;
@@ -76,14 +80,76 @@ header{
     display: block;
 }
 
+section{
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    
+}
+
+section div{
+    padding: 5%;
+    margin-top: 5%;
+    background-color: #ce1212;
+}
+
 /* Responsive */
 
 @media (min-width: 768px){
+    #Switch_label{
+        display: none;
+    }
+    #Main_menu ul{
+        display: block;
+    }
+    
+    
+    header{
+        display: flex;
+        justify-content: space-between;
+    }
 
+    #Main_menu{
+        margin-top: 45px;
+        border: none;
+    }
+
+    #Main_menu ul, #Main_menu li{
+        display: inline-block;
+        text-align: left;
+        border: none;
+    }
+
+    #Main_menu a span{
+        display: block;
+        font-size: 14px;
+    }
+
+    #Main_menu a span::after{
+        display: none;
+    }
+
+    
+    #Main_menu li:not(:first-child){
+        margin-left: 30px;
+    }
+
+    #Main_menu li a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 40px;
+        background-color: #ce1212;
+        color: white;
+        box-shadow: 3px 4px 5px grey;
+    }
 
 }
 
 
 @media (min-width: 992px){
-
+    #Main_menu li:not(:first-child){
+        margin-left: 60px;
+    }
 }
