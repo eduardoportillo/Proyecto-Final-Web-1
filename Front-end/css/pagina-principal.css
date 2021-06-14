@@ -1,5 +1,13 @@
+html{
+    margin: 0px;
+}
+
 body{
     background-color: #eeebdd;
+}
+
+.flex{
+    display: flex;
 }
 
 /* Header */
@@ -15,7 +23,6 @@ header a{
 }
 
 #logo{
-    display: flex;
     justify-content: center;
     align-items: center;
     width: auto;
@@ -80,17 +87,70 @@ header a{
     display: block;
 }
 
+/* cuadros */
+
 section{
-    display: flex;
     width: auto;
+    margin-top: 20px;
     flex-direction: column;
-    
 }
 
 section div{
-    padding: 5%;
-    margin-top: 5%;
-    background-color: #ce1212;
+    padding: 3%;
+    margin-top: 4%;
+    background-color: #1b1717;
+}
+
+
+#first-box img{
+    width: 35%;
+    height: 35%;
+}
+
+#first-box span{
+    color: #ce1212;
+    font-family: pattaya;
+    justify-content: end;
+    text-align: center;
+    font-size: 50%;
+}
+
+#second-box{
+    flex-direction: row-reverse;
+}
+
+#second-box img{
+    width: 35%;
+    height: 35%;
+}
+
+#second-box span{
+    color: #ce1212;
+    font-family: pattaya;
+    justify-content: end;
+    text-align: center;
+    font-size: 50%;
+}
+
+#third-box img{
+    width: 35%;
+    height: 35%;
+}
+
+#third-box span{
+    color: #ce1212;
+    font-family: pattaya;
+    justify-content: end;
+    text-align: center;
+    font-size: 50%;
+}
+
+footer{
+    width: auto;
+    margin: 0%;
+    margin-top: 2%;
+    height: 5rem;
+    background-color: #1b1717;
 }
 
 /* Responsive */
@@ -145,11 +205,24 @@ section div{
         box-shadow: 3px 4px 5px grey;
     }
 
+    
+
 }
 
 
 @media (min-width: 992px){
+
     #Main_menu li:not(:first-child){
         margin-left: 60px;
+    } 
+    
+    
+
+    .box {
+        font-size: 80px;
+    } 
+
+    footer{
+        height: 15rem;
     }
 }
