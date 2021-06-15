@@ -1,0 +1,45 @@
+#section-form{
+    padding: 10px;
+    background-color: #1b1717;
+}
+
+form {
+  flex-direction: column;
+}
+
+form img {
+    width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+form div {
+  justify-content: center;
+  justify-items: center;
+}
+
+.password{
+    font-size: 14px;
+}
+
+#repit-password{
+    width: 119px;
+}
+
+form label {
+  margin: 10px;
+  color: #ce1212;
+  font-family: pattaya;
+}
+
+form button {
+  font-family: pattaya;
+  width: 150px;	
+  height: 40px;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ce1212;
+  color: white;
+}

@@ -151,6 +151,7 @@ footer{
     margin-top: 2%;
     height: 5rem;
     background-color: #1b1717;
+    border-top: #ce1212 solid 10px;
 }
 
 /* Responsive */
@@ -214,9 +215,7 @@ footer{
 
     #Main_menu li:not(:first-child){
         margin-left: 60px;
-    } 
-    
-    
+    }     
 
     .box {
         font-size: 80px;
