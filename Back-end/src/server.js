@@ -1,23 +1,23 @@
-const express = require('express');
+const express = require('express'),
+      path = require('path'),
+      morgan = require('morgan');
+
+const cors = require('cors');
 
 const app = express();
 
 // settings
+app.use(cors());
+app.set('port', process.env.PORT || 3000);
+app.use(express.static('public'));
 
-
-
-// middleware
+// middlewares
+app.use(morgan('dev'));
+app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// Global variables
-
-
 // Routes
-app.get('/', (req,res)=> {
-    res.send('hello world');
-});
+app.use(require('../routes/index.routes'));
 
-// Static File
-app.use(express.static(path.join(__dirname, 'public')));
-
-module.exports = app;
+app.listen(3000);
+console.log('Server on port', 3000);
