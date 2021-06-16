@@ -7,9 +7,9 @@ let error = document.getElementById("error");
 
 error.style.color = "#ce1212";
 
-let form = document.getElementById("form");
+let form_singup = document.getElementById("form-singup");
 
-form.addEventListener("submit", (evt) => {
+form_singup.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
   let mensajeError = [];
@@ -36,16 +36,19 @@ form.addEventListener("submit", (evt) => {
 
   error.innerHTML = mensajeError.join(", ");
 
-
   if (mensajeError.length === 0) {
+    let user = JSON.stringify({
+      nombre: nombre.value,
+      apellido: apellido.value,
+      correo: email.value,
+      password: password.value
+    });
+
+    console.log(user + "type: " + typeof user);
+
     fetch("http://localhost:3000/singUp", {
       method: "POST",
-      body: JSON.stringify({
-        "nombre": nombre.value,
-        "apellido": apellido.value,
-        "correo": email.value,
-        "password": password.value
-      })
+      body: user
     })
       .then((res) => res.json())
       .then((data) => {

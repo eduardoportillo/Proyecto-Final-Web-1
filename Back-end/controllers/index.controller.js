@@ -13,6 +13,12 @@ const insertUser = async (req, res) => {
     res.json({message: 'User Added Succesfully'});
 };
 
+// const venderProducto = async (req,res) => {
+//   const {titulo, descripcion, precio, url_fotografia}
+
+//   await pool.query('INSERT INTO anuncio (titulo, descripcion, precio, url_fotografia, activado) VALUES($1,$2,$3);', )
+// }
+
 module.exports = {
   getUser,
   insertUser

@@ -32,6 +32,40 @@ form label {
   font-family: pattaya;
 }
 
+#seleccion-file{
+  position: relative;
+  display: inline-block;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#seleccion-file::before{
+  background-color: #ce1212;
+  width: 135px;
+  font-family: pattaya;
+  color: white;
+  display: flex;            
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'Seleccionar Foto'; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; 
+}
+
+#seleccion-file input[type="file"] {
+  opacity: 0;
+  width: auto;
+  height: 32px;
+  display: inline-block;  
+  margin-right: auto;
+  margin-left: auto;          
+}
+
 form button {
   font-family: pattaya;
   width: 150px;
