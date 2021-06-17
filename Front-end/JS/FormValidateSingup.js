@@ -1,60 +1,58 @@
-let nombre = document.getElementById("name");
-let apellido = document.getElementById("apellido");
-let email = document.getElementById("email");
-let password = document.getElementById("password");
-let passwordRep = document.getElementById("repit-password");
-let error = document.getElementById("error");
 
-error.style.color = "#ce1212";
 
-let form_singup = document.getElementById("form-singup");
 
-form_singup.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-
-  let mensajeError = [];
+function sendUser() {
+  let nombre = document.getElementById("name");
+  let apellido = document.getElementById("apellido");
+  let email = document.getElementById("email");
+  let password = document.getElementById("password");
+  let passwordRep = document.getElementById("repit-password");
+  let error = document.getElementById("error");
+  error.style.color = "#ce1212";
 
   if (nombre.value === null || nombre.value === "") {
-    mensajeError.push("Ingresa un nombre");
+    error.innerHTML = "Ingresa un nombre";
+    return;
   }
 
   if (apellido.value === null || apellido.value === "") {
-    mensajeError.push("Ingresa una apellido");
+    error.innerHTML = "Ingresa un apellido";
+    return;
   }
 
   if (email.value === null || email.value === "") {
-    mensajeError.push("Ingresa un email");
+    error.innerHTML = "Ingresa un email";
+    return;
   }
 
   if (password.value === null || password.value === "") {
-    mensajeError.push("Ingresa una contraseña");
+    error.innerHTML = "Ingresa un password";
+    return;
   }
 
-  // if (password.value !== passwordRep.value) {
-  //     mensajeError.push('la contraseña no son iguales');
-  // }
+  if (password.value !== passwordRep.value) {
+    error.innerHTML='la contraseña no son iguales';
+    return;
 
-  error.innerHTML = mensajeError.join(", ");
+  }
 
-  if (mensajeError.length === 0) {
-    let user = JSON.stringify({
-      nombre: nombre.value,
-      apellido: apellido.value,
-      correo: email.value,
-      password: password.value
+  fetch("http://localhost:3000/singup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: {
+        nombre: nombre.value,
+        apellido: apellido.value,
+        correo: email.value,
+        password: password.value,
+      },
+      estado: "enviado",
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      alert(data.estado);
     });
-
-    console.log(user + "type: " + typeof user);
-
-    fetch("http://localhost:3000/singUp", {
-      method: "POST",
-      body: user
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-
-    return true;
-  }
-});
+}

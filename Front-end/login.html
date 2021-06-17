@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/pagina-principal.css" />
-    <link rel="stylesheet" href="../css/form.css" />
-    <title>marketplis - Sign Up</title>
+    <link rel="stylesheet" href="./css/pagina-principal.css" />
+    <link rel="stylesheet" href="./css/form.css" />
+    <title>marketplis - Sign IN</title>
   </head>
   <body>
     <header>
-      <a href="../index.html">
+      <a href="./index.html">
         <div id="logo" class="flex">
           <img src="/Front-end/img/SVG/logo.svg" alt="logo.svg" />
           <span>marketplis</span>
@@ -27,25 +27,14 @@
 
         <ul>
           <li>
-            <a href="login.html"> Log in </a>
+            <a href="sing-up.html"> Sing up </a>
           </li>
         </ul>
       </nav>
     </header>
     <section id="section-form">
-      <form  action="" method="POST" class="flex" id="form-singup">
-        <img src="../img/SVG/user.svg" alt="user.svg" />
-
-        <div>
-          <label for="name">Nombre:</label>
-          <input type="text" id="name" name="nombre" />
-        </div>
-
-        <div>
-          <label for="apellido">Apellido:</label>
-          <input type="text" id="apellido" name="apellido" />
-        </div>
-
+      <form class="flex" id="form-login">
+        <img src="./img/SVG/user.svg" alt="user.svg" />
         <div>
           <label for="email"> Email:</label>
           <input type="text" id="email" name="correo" />
@@ -56,17 +45,12 @@
           <input type="password" id="password" name="password" />
         </div>
 
-        <div class="password">
-          <label for="repit-password">Repite la Contraseña:</label>
-          <input type="password" id="repit-password" name="repit-password" />
-        </div>
-
         <div id="error"></div>
 
-        <button type="submit">Registrarse</button>
+        <button type="button" onclick="send();" id="button-login" style="cursor:pointer;">Ingresar</button>
       </form>
     </section>
 
-    <script src="../JS/FormValidateSingup.js"></script>
+    <script src="./JS/FormValidateLogin.js"></script>
   </body>
 </html>
