@@ -66,10 +66,23 @@ const crearProducto = async (req, res) => {
     "INSERT INTO anuncio (titulo, descripcion, precio, url_fotografia, activado, usuario_id) VALUES($1, $2, $3, $4, $5, $6)",
     [titulo, descripcion, precio, url_fotografia, activado, usuario_id]
   );
+
+  req.body.estado = "enviado";
+
+  res.json(req.body.estado);
 };
+
+const getAnuncio = async (req, res) => {
+  const anuncioActivo = await pool.query(
+    "select * from anuncio where activado = true"
+  )
+
+  res.json(anuncioActivo.rows);
+}
 
 module.exports = {
   login,
   crearUsuario,
   crearProducto,
+  getAnuncio
 };

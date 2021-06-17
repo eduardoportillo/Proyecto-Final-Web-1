@@ -45,6 +45,6 @@ function sendAnuncio() {
   })
     .then((res) => res.json())
     .then((data) => {
-      alert(data.estado);
+      alert(data);   
     });
 }
