@@ -106,9 +106,18 @@ const eliminarAnuncio = async (req, res) => {
 
 const editarAnuncio = async (req, res) => {
   const { data, estado } = req.body;
+  let titulo = data.titulo;
+  let descripcion = data.descripcion;
+  let precio = data.precio;
+  let url_fotografia = data.url_fotografia;
+  let usuario_id = data.usuario_id;
+  let anuncio_id = data.anuncio_id
+
   const anuncioActivo = await pool.query(
-    "UPDATE anuncio SET titulo='', descripcion='', precio=0, url_fotografia='', activado=false, usuario_id=nextval('anuncio_usuario_id_seq'::regclass) WHERE anuncio_id=nextval('anuncio_anuncio_id_seq'::regclass);"
-  );
+    "UPDATE anuncio SET titulo=$1, descripcion=$2, precio=$3, url_fotografia=$4, activado=true, usuario_id=$5 WHERE anuncio_id=$6", 
+    [titulo, descripcion, precio, url_fotografia, usuario_id, anuncio_id]);
+
+    res.json({estado: "anuncio editado"});
 };
 
 module.exports = {
@@ -119,4 +128,5 @@ module.exports = {
   getAnuncioUser,
   editarAnuncio,
   eliminarAnuncio,
+  editarAnuncio
 };

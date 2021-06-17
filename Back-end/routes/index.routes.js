@@ -8,7 +8,8 @@ const {
   crearProducto,
   getAnuncio,
   getAnuncioUser,
-  eliminarAnuncio
+  eliminarAnuncio,
+  editarAnuncio
 
 } = require('../controllers/index.controller');
 
@@ -18,5 +19,7 @@ router.post('/crearAnuncio', crearProducto)
 router.get('/anunciosActivos', getAnuncio)
 router.post('/getAnuncioUser', getAnuncioUser)
 router.post('/eliminarAnuncio', eliminarAnuncio)
+router.post('/editarAnuncio', editarAnuncio)
+
 
 module.exports = router;

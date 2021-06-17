@@ -1,5 +1,7 @@
 
 function sendAnuncio() {
+  let userL = JSON.parse(localStorage.getItem("usuario_log"));
+
   let titulo = document.getElementById("NP");
   let descripcion = document.getElementById("Descripcion-producto");
   let Precio = document.getElementById("PP");
@@ -25,7 +27,7 @@ function sendAnuncio() {
     return;
   }
 
-//   console.log(precio.value);
+  
   fetch("http://localhost:3000/crearAnuncio", {
     method: "POST",
     headers: {
@@ -38,13 +40,13 @@ function sendAnuncio() {
         precio:  5,
         url_fotografia: foto,
         activado: activado,
-        usuario_id: 1,
+        usuario_id: userL.usuario_id
       },
       estado: "enviado",
     }),
   })
     .then((res) => res.json())
     .then((data) => {
-      alert(data);   
+      window.location.href = "./tus-anuncios.html";
     });
 }
