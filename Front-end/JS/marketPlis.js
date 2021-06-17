@@ -26,24 +26,24 @@ function getAnunciosActivos() {
     }
   }).then((res) => res.json())
     .then((data) => {
-      dataAnuncios = JSON.stringify(data);
-      console.log(dataAnuncios);
+      dataAnuncios =data;
+      console.log(dataAnuncios.length);
       let divAnuncios = document.getElementById("market-plis-div");
-      // for (let i = 0; i < dataAnuncios.length; i++) {
-      //   divAnuncios.innerHTML +=
-      //     `<div class="divAnuncios">
-      //   <P>` +
-      //     dataAnuncios[i].titulo +
-      //     `</P>
-      //   <img src="" alt="product" id="img-anuncio">
-      //   <div>
-      //     <a href="#" class="button">comprar</a>
-      //     <a href="#" class="button">` +
-      //     dataAnuncios[i].titulo+
-      //     `</a>
-      //   </div>
-      // </div>`;
-      // }
+      for (let i = 0; i < dataAnuncios.length; i++) {
+        divAnuncios.innerHTML +=
+          `<div class="divAnuncios">
+        <P>` +
+          dataAnuncios[i].titulo +
+          `</P>
+        <img src="" alt="product" id="img-anuncio">
+        <div>
+          <a href="#" class="button">comprar</a>
+          <a href="#" class="button">` +
+          dataAnuncios[i].titulo+
+          `</a>
+        </div>
+      </div>`;
+      }
     });
 }
 
