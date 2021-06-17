@@ -7,6 +7,7 @@ function sendAnuncio() {
   let Precio = document.getElementById("PP");
   let foto = "url / ver / como / manejar / fotos / despues"
   let activado = true;
+  let img = document.getElementById("seleccion-file").files;
 
   let error = document.getElementById("error");
 
@@ -27,7 +28,7 @@ function sendAnuncio() {
     return;
   }
 
-  
+  Precio = parseFloat(Precio.value);
   fetch("http://localhost:3000/crearAnuncio", {
     method: "POST",
     headers: {
@@ -37,12 +38,13 @@ function sendAnuncio() {
         data: {
         titulo: titulo.value,
         descripcion: descripcion.value,
-        precio:  5,
+        precio:  Precio,
         url_fotografia: foto,
         activado: activado,
         usuario_id: userL.usuario_id
       },
       estado: "enviado",
+      img: img,
     }),
   })
     .then((res) => res.json())

@@ -53,6 +53,6 @@ function sendUser() {
   })
     .then((res) => res.json())
     .then((data) => {
-      alert(data.estado);
+      window.location.href = "./market-plis.html";
     });
 }

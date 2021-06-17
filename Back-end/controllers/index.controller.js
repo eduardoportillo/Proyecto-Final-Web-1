@@ -62,6 +62,8 @@ const crearProducto = async (req, res) => {
   let activado = data.activado;
   let usuario_id = data.usuario_id;
 
+  //console.log( req.img);
+
   const crearAnuncio = await pool.query(
     "INSERT INTO anuncio (titulo, descripcion, precio, url_fotografia, activado, usuario_id) VALUES($1, $2, $3, $4, $5, $6)",
     [titulo, descripcion, precio, url_fotografia, activado, usuario_id]
@@ -91,7 +93,7 @@ const getAnuncioUser = async (req, res) => {
   // if (!getAnuncioUser.rows) {
   //   res.json([]);
   // } else {
-    res.json(getAnuncioUser.rows);
+  res.json(getAnuncioUser.rows);
   // }
 };
 
@@ -111,13 +113,19 @@ const editarAnuncio = async (req, res) => {
   let precio = data.precio;
   let url_fotografia = data.url_fotografia;
   let usuario_id = data.usuario_id;
-  let anuncio_id = data.anuncio_id
+  let anuncio_id = data.anuncio_id;
 
   const anuncioActivo = await pool.query(
-    "UPDATE anuncio SET titulo=$1, descripcion=$2, precio=$3, url_fotografia=$4, activado=true, usuario_id=$5 WHERE anuncio_id=$6", 
-    [titulo, descripcion, precio, url_fotografia, usuario_id, anuncio_id]);
+    "UPDATE anuncio SET titulo=$1, descripcion=$2, precio=$3, url_fotografia=$4, activado=true, usuario_id=$5 WHERE anuncio_id=$6",
+    [titulo, descripcion, precio, url_fotografia, usuario_id, anuncio_id]
+  );
 
-    res.json({estado: "anuncio editado"});
+  res.json({ estado: "anuncio editado" });
+};
+
+const uploadfoto = async (req, res) => {
+  const { img } = req.body;
+
 };
 
 module.exports = {
@@ -128,5 +136,5 @@ module.exports = {
   getAnuncioUser,
   editarAnuncio,
   eliminarAnuncio,
-  editarAnuncio
+  editarAnuncio,
 };

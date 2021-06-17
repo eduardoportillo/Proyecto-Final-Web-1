@@ -44,14 +44,16 @@ function getAnunciosActivos() {
       for (let i = 0; i < dataAnuncios.length; i++) {
         divAnuncios.innerHTML +=
             `<div class="divAnuncios">
-          <P>` +
+          <p>` +
             dataAnuncios[i].titulo +
-            `</P>
-          <img src="" alt="product" id="img-anuncio">
+            `</p>
+            <div class="img-anuncio">
+          <img src="" alt="productsvg" >
+          </div>
           <div>
             <a href="#" class="button">comprar</a>
-            <a href="#" class="button">` +
-            dataAnuncios[i].precio +
+            <a href="#" class="button">$` +
+            dataAnuncios[i].precio + 
             `</a>
           </div>
         </div>`;
