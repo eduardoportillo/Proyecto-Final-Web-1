@@ -36,7 +36,7 @@ const crearUsuario = async (req, res) => {
       "select * from usuario where correo = $1",
       [correo]
     );
-    
+
     if (userRegistrado.rows.length > 0) {
       req.body.estado = "error";
     } else {
@@ -52,7 +52,24 @@ const crearUsuario = async (req, res) => {
   res.json(req.body);
 };
 
+const crearProducto = async (req, res) => {
+  const { data, estado } = req.body;
+
+  let titulo = data.titulo;
+  let descripcion = data.descripcion;
+  let precio = data.precio;
+  let url_fotografia = data.url_fotografia;
+  let activado = data.activado;
+  let usuario_id = data.usuario_id;
+
+  const crearAnuncio = await pool.query(
+    "INSERT INTO anuncio (titulo, descripcion, precio, url_fotografia, activado, usuario_id) VALUES($1, $2, $3, $4, $5, $6)",
+    [titulo, descripcion, precio, url_fotografia, activado, usuario_id]
+  );
+};
+
 module.exports = {
   login,
   crearUsuario,
+  crearProducto,
 };
