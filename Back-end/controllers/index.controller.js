@@ -75,14 +75,48 @@ const crearProducto = async (req, res) => {
 const getAnuncio = async (req, res) => {
   const anuncioActivo = await pool.query(
     "select * from anuncio where activado = true"
-  )
+  );
 
   res.json(anuncioActivo.rows);
-}
+};
+
+const getAnuncioUser = async (req, res) => {
+  const { usuario_id } = req.body;
+
+  const getAnuncioUser = await pool.query(
+    "select * from anuncio where usuario_id = $1",
+    [usuario_id]
+  );
+
+  // if (!getAnuncioUser.rows) {
+  //   res.json([]);
+  // } else {
+    res.json(getAnuncioUser.rows);
+  // }
+};
+
+const eliminarAnuncio = async (req, res) => {
+  const { anuncioID } = req.body;
+  const anuncioUserDelete = await pool.query(
+    "DELETE FROM anuncio WHERE anuncio_id=$1",
+    [anuncioID]
+  );
+  res.json({ estado: "delete succesfull" });
+};
+
+const editarAnuncio = async (req, res) => {
+  const { data, estado } = req.body;
+  const anuncioActivo = await pool.query(
+    "UPDATE anuncio SET titulo='', descripcion='', precio=0, url_fotografia='', activado=false, usuario_id=nextval('anuncio_usuario_id_seq'::regclass) WHERE anuncio_id=nextval('anuncio_anuncio_id_seq'::regclass);"
+  );
+};
 
 module.exports = {
   login,
   crearUsuario,
   crearProducto,
-  getAnuncio
+  getAnuncio,
+  getAnuncioUser,
+  editarAnuncio,
+  eliminarAnuncio,
 };

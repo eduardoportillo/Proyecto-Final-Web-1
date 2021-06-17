@@ -16,7 +16,7 @@
   </head>
   <body>
     <header >
-      <a href="#">
+      <a href="./index.html">
         <div id="logo" class="flex">
           <img src="/Front-end/img/SVG/logo.svg" alt="logo.svg" />
           <span>marketplis</span>
@@ -31,26 +31,27 @@
 
         <input type="checkbox" id="menu-switch" />
 
-        <ul>
+        <ul id="ul-market-plis">
           <li>
-            <a href="#" id="tu-anuncio"> Tus Anuncios </a>
+            <a href="./tus-anuncios.html" id="tu-anuncio"> Tus Anuncios </a>
           </li>
           <li>
-            <a href="crear-anuncio.html"> Vender </a>
+            <a href="crear-anuncio.html" id="vender"> Vender </a>
           </li>
           <li>
-            <a href="#" id="cerrar" type="button"> cerrar </a>
+            <a id="cerrar" type="button" id="cerrar"> cerrar </a>
           </li>
         </ul>
       </nav>
     </header>
 
     <section id="market-plis-section" class="flex">
-      <div id="market-plis-div">
+      <div id="market-plis-div" style="display: flex;">
 
       </div>
     </section>
 
+    <script src="./JS/IndexRedirect.js"></script>
     <script src="./JS/marketPlis.js"></script>
   </body>
 </html>

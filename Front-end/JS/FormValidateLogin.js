@@ -11,6 +11,7 @@ function validate(){
   return usrjson;
 
 }
+validate()
 
 function send (){
   let email = document.getElementById("email");
@@ -54,7 +55,7 @@ function send (){
       }
       if(data.estado === 'exito'){
         localStorage.setItem("usuario_log",JSON.stringify(data.data))
-        validate()
+        window.location.href = "./market-plis.html";
         return;
       }
       error.innerHTML ="error desconocido"

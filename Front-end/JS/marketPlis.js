@@ -1,16 +1,28 @@
 function validate() {
   var usrjson = {};
   var usr = localStorage.getItem("usuario_log");
-  if (usr) {
-    usrjson = JSON.parse(usr);
-  }
-  if (usrjson.correo) {
-    window.location.href = "./market-plis.html";
+  let tusAnuncios = document.getElementById("tu-anuncio");
+  let vender = document.getElementById("vender");
+  let cerrar = document.getElementById("cerrar");
+  let ul_market_place = document.getElementById("ul-market-plis");
+
+  if (!usr) {
+    tusAnuncios.style.display = "none";
+    vender.style.display = "none";
+    cerrar.style.display = "none";
+
+    ul_market_place.innerHTML += `<li>
+        <a href="./sing-up.html"> sign up </a>
+      </li>`;
+
+    ul_market_place.innerHTML += `<li>
+        <a href="./login.html"> LogIn </a>
+      </li>`;
   }
   return usrjson;
 }
+validate();
 
-let cerrar = document.getElementById("cerrar");
 let dataAnuncios;
 
 cerrar.addEventListener("click", () => {
@@ -23,26 +35,26 @@ function getAnunciosActivos() {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-    }
-  }).then((res) => res.json())
+    },
+  })
+    .then((res) => res.json())
     .then((data) => {
-      dataAnuncios =data;
-      console.log(dataAnuncios.length);
+      dataAnuncios = data;
       let divAnuncios = document.getElementById("market-plis-div");
       for (let i = 0; i < dataAnuncios.length; i++) {
         divAnuncios.innerHTML +=
-          `<div class="divAnuncios">
-        <P>` +
-          dataAnuncios[i].titulo +
-          `</P>
-        <img src="" alt="product" id="img-anuncio">
-        <div>
-          <a href="#" class="button">comprar</a>
-          <a href="#" class="button">` +
-          dataAnuncios[i].titulo+
-          `</a>
-        </div>
-      </div>`;
+            `<div class="divAnuncios">
+          <P>` +
+            dataAnuncios[i].titulo +
+            `</P>
+          <img src="" alt="product" id="img-anuncio">
+          <div>
+            <a href="#" class="button">comprar</a>
+            <a href="#" class="button">` +
+            dataAnuncios[i].precio +
+            `</a>
+          </div>
+        </div>`;
       }
     });
 }
