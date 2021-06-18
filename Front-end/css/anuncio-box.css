@@ -1,0 +1,61 @@
+/* market-plis-div */
+#market-plis-div{
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.divAnuncios {
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 10px;
+    align-items: center;
+    font-family: pattaya;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    width: 250px;
+    height: 150px;
+    background-color: #1b171744;
+}
+  
+  .divAnuncios #img-anuncio{
+      width: 30%;
+  }
+  
+  .divAnuncios p {
+    font-size: 20px;
+    margin: 0;
+
+padding:0;
+    color: #ce1212;
+
+  }
+  
+  .divAnuncios .button{
+    text-decoration: none;
+    color: #ce1212;
+  }
+
+  /* tus-anuncios-div */
+
+  #market-plis-section{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  #tus-anuncios-div{
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 10px;
+    align-items: center;
+    font-family: pattaya;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    width: 400px;
+    height: 250px;
+    background-color: #1b171744;
+  }
+
+  .img-anuncio{
+    height: 100px;
+  }

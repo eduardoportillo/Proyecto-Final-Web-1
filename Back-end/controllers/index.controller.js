@@ -90,11 +90,8 @@ const getAnuncioUser = async (req, res) => {
     [usuario_id]
   );
 
-  // if (!getAnuncioUser.rows) {
-  //   res.json([]);
-  // } else {
   res.json(getAnuncioUser.rows);
-  // }
+  
 };
 
 const eliminarAnuncio = async (req, res) => {
