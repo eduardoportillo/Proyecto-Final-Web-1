@@ -11,7 +11,7 @@ function editProduct() {
   let key = params.get("key");
 
   key = parseInt(key);
-  precio = precio.parseFloat;
+  precioFloat = parseFloat(Precio.value);
 
   let error = document.getElementById("error");
 
@@ -41,7 +41,7 @@ function editProduct() {
       data: {
         titulo: titulo.value,
         descripcion: descripcion.value,
-        precio: precio,
+        precio: precioFloat,
         url_fotografia: foto,
         usuario_id: userL.usuario_id,
         anuncio_id: key,

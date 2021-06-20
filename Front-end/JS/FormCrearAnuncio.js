@@ -1,3 +1,14 @@
+function validateUser() {
+  var usrjson = {};
+  var usr = localStorage.getItem("usuario_log");
+  if (!usr) {
+    usrjson = JSON.parse(usr);
+    window.location.href = "./market-plis.html";
+
+  }
+  return usrjson;
+}
+validateUser();
 
 function sendAnuncio() {
   let userL = JSON.parse(localStorage.getItem("usuario_log"));

@@ -1,4 +1,12 @@
 
+function validate(){
+  var usr = localStorage.getItem("usuario_log");
+  if(usr){
+    window.location.href = "./market-plis.html";
+  }
+
+}
+validate()
 
 
 function sendUser() {

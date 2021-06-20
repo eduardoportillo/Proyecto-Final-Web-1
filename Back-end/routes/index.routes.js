@@ -9,7 +9,8 @@ const {
   getAnuncio,
   getAnuncioUser,
   eliminarAnuncio,
-  editarAnuncio
+  editarAnuncio,
+  editAnuncioActivo
 
 } = require('../controllers/index.controller');
 
@@ -20,6 +21,7 @@ router.get('/anunciosActivos', getAnuncio)
 router.post('/getAnuncioUser', getAnuncioUser)
 router.post('/eliminarAnuncio', eliminarAnuncio)
 router.post('/editarAnuncio', editarAnuncio)
+router.post('/editAnuncioActivo',editAnuncioActivo)
 
 
 module.exports = router;

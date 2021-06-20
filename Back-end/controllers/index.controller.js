@@ -62,8 +62,6 @@ const crearProducto = async (req, res) => {
   let activado = data.activado;
   let usuario_id = data.usuario_id;
 
-  //console.log( req.img);
-
   const crearAnuncio = await pool.query(
     "INSERT INTO anuncio (titulo, descripcion, precio, url_fotografia, activado, usuario_id) VALUES($1, $2, $3, $4, $5, $6)",
     [titulo, descripcion, precio, url_fotografia, activado, usuario_id]
@@ -91,7 +89,6 @@ const getAnuncioUser = async (req, res) => {
   );
 
   res.json(getAnuncioUser.rows);
-  
 };
 
 const eliminarAnuncio = async (req, res) => {
@@ -122,7 +119,20 @@ const editarAnuncio = async (req, res) => {
 
 const uploadfoto = async (req, res) => {
   const { img } = req.body;
+};
 
+const editAnuncioActivo = async (req, res) => {
+  const { data } = req.body;
+
+  let activo = data.activo;
+  let anuncio_id = data.anuncio_id;
+
+  const insetActico = await pool.query(
+    "UPDATE anuncio SET activado=$1 WHERE anuncio_id=$2",
+    [activo, anuncio_id]
+  );
+
+  res.json({estado: "activo actualizado"})
 };
 
 module.exports = {
@@ -134,4 +144,5 @@ module.exports = {
   editarAnuncio,
   eliminarAnuncio,
   editarAnuncio,
+  editAnuncioActivo,
 };

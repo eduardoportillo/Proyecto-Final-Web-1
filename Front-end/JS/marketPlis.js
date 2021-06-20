@@ -51,6 +51,9 @@ function getAnunciosActivos() {
           <img src="" alt="productsvg" >
           </div>
           <div>
+            <p> Descripción: </p>
+            <p style="color: black; font-size: 14px;">` +
+            dataAnuncios[i].descripcion + `</p>
             <a href="#" class="button">comprar</a>
             <a href="#" class="button">$` +
             dataAnuncios[i].precio + 
