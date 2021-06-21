@@ -1,14 +1,12 @@
-function validateUser() {
-  var usrjson = {};
-  var usr = localStorage.getItem("usuario_log");
-  if (!usr) {
-    usrjson = JSON.parse(usr);
-    window.location.href = "./market-plis.html";
 
+function validate(){
+  var usr = localStorage.getItem("usuario_log");
+  if(usr){
+    window.location.href = "./market-plis.html";
   }
-  return usrjson;
+
 }
-validateUser();
+validate()
 
 function sendAnuncio() {
   let userL = JSON.parse(localStorage.getItem("usuario_log"));
@@ -16,16 +14,12 @@ function sendAnuncio() {
   let titulo = document.getElementById("NP");
   let descripcion = document.getElementById("Descripcion-producto");
   let Precio = document.getElementById("PP");
-  let foto = "url / ver / como / manejar / fotos / despues"
+  let precioFloat;
   let activado = true;
-  // let img = document.getElementById("seleccion-file").files;
-
   let error = document.getElementById("error");
 
   error.style.color = "#ce1212";
 
-  precio = precio.parseFloat;
-  
   if (titulo.value === null || titulo.value === "") {
     error.innerHTML = "Ingresa un titulo";
     return;
@@ -41,26 +35,24 @@ function sendAnuncio() {
     return;
   }
 
-  Precio = parseFloat(Precio.value);
-  fetch("http://localhost:3000/crearAnuncio", {
+  precioFloat = parseFloat(Precio.value);
+
+  let img = document.getElementById("seleccion-file");
+  let data = new FormData();
+
+  data.append("titulo", titulo.value);
+  data.append("descripcion", descripcion.value);
+  data.append("precio", precioFloat);
+  data.append("img", img.files[0]);
+  data.append("activado", activado);
+  data.append("usuario_id", userL.usuario_id);
+
+  fetch("http://127.0.0.1:3000/crearAnuncio", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        data: {
-        titulo: titulo.value,
-        descripcion: descripcion.value,
-        precio:  Precio,
-        url_fotografia: foto,
-        activado: activado,
-        usuario_id: userL.usuario_id
-      },
-      estado: "enviado",
-    }),
+    body: data,
   })
     .then((res) => res.json())
     .then((data) => {
-      window.location.href = "./tus-anuncios.html";
+      window.location.href = "./market-plis.html";
     });
 }

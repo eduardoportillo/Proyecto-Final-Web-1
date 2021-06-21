@@ -1,13 +1,10 @@
-
-function validate(){
+function validate() {
   var usr = localStorage.getItem("usuario_log");
-  if(usr){
+  if (usr) {
     window.location.href = "./market-plis.html";
   }
-
 }
-validate()
-
+validate();
 
 function sendUser() {
   let nombre = document.getElementById("name");
@@ -39,9 +36,8 @@ function sendUser() {
   }
 
   if (password.value !== passwordRep.value) {
-    error.innerHTML='la contraseña no son iguales';
+    error.innerHTML = "la contraseña no son iguales";
     return;
-
   }
 
   fetch("http://localhost:3000/singup", {
@@ -61,6 +57,12 @@ function sendUser() {
   })
     .then((res) => res.json())
     .then((data) => {
-      window.location.href = "./market-plis.html";
+      if (data.estado === "exito") {
+        localStorage.setItem("usuario_log",JSON.stringify(data.data))
+        window.location.href = "./market-plis.html";
+        return;
+      }else{
+        error.innerHTML ="El Usuario ya existe"
+      }
     });
 }

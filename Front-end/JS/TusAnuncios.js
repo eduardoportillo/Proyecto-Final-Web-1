@@ -49,7 +49,18 @@ function init() {
           <P>` +
           dataAnunciosUser[i].titulo +
           `</P>
-          <img src="" alt="product" id="img-anuncio">
+          <div class="img-anuncio">
+          <img src="http://localhost:3000`+dataAnunciosUser[i].url_fotografia+`" alt="productsvg" >
+          </div>
+          <div>
+          <p> Descripción: </p>
+          <p style="color: black; font-size: 14px;">` +
+          dataAnunciosUser[i].descripcion + `</p>
+          <a href="#" class="button">comprar</a>
+          <a href="#" class="button">$` +
+          dataAnunciosUser[i].precio + 
+          `</a>
+          </div>
           <div>
             <a  onclick="clickeditar('` +
           dataAnunciosUser[i].anuncio_id +
@@ -102,7 +113,7 @@ function booleanCheckBox(key, element){
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
     });
     
   }else{
@@ -120,7 +131,7 @@ function booleanCheckBox(key, element){
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
     });
   }
   

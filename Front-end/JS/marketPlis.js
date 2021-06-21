@@ -48,7 +48,7 @@ function getAnunciosActivos() {
             dataAnuncios[i].titulo +
             `</p>
             <div class="img-anuncio">
-          <img src="" alt="productsvg" >
+          <img src="http://localhost:3000`+dataAnuncios[i].url_fotografia+`" alt="productsvg" >
           </div>
           <div>
             <p> Descripción: </p>
@@ -58,6 +58,8 @@ function getAnunciosActivos() {
             <a href="#" class="button">$` +
             dataAnuncios[i].precio + 
             `</a>
+            <p>Usuario:</p>
+            <p style="color: black; ">`+dataAnuncios[i].correo+`</p>
           </div>
         </div>`;
       }

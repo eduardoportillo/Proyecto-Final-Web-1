@@ -49,18 +49,24 @@ const crearUsuario = async (req, res) => {
   } catch (e) {
     req.body.estado = "error";
   }
-  res.json(req.body);
+  res.json(req.body.estado);
 };
 
 const crearProducto = async (req, res) => {
-  const { data, estado } = req.body;
+  let titulo = req.body.titulo;
+  let descripcion = req.body.descripcion;
+  let precio = req.body.precio;
+  let activado = req.body.activado;
+  let usuario_id = req.body.usuario_id;
 
-  let titulo = data.titulo;
-  let descripcion = data.descripcion;
-  let precio = data.precio;
-  let url_fotografia = data.url_fotografia;
-  let activado = data.activado;
-  let usuario_id = data.usuario_id;
+  if (req.file !== undefined) {
+    let path_multer = req.file.path;
+    let name_img = path_multer.substring(4, path_multer.length);
+    url_fotografia = "/" + "img" + "/" + name_img;
+  } else {
+    url_fotografia = "img-noinsertada";
+    res.json({ estado: "la imagen esta indefinida" });
+  }
 
   const crearAnuncio = await pool.query(
     "INSERT INTO anuncio (titulo, descripcion, precio, url_fotografia, activado, usuario_id) VALUES($1, $2, $3, $4, $5, $6)",
@@ -74,7 +80,7 @@ const crearProducto = async (req, res) => {
 
 const getAnuncio = async (req, res) => {
   const anuncioActivo = await pool.query(
-    "select * from anuncio where activado = true"
+    "select correo , anuncio_id, titulo, descripcion, url_fotografia from anuncio A join usuario U on A.usuario_id  = U.usuario_id where activado = true"
   );
 
   res.json(anuncioActivo.rows);
@@ -101,13 +107,20 @@ const eliminarAnuncio = async (req, res) => {
 };
 
 const editarAnuncio = async (req, res) => {
-  const { data, estado } = req.body;
-  let titulo = data.titulo;
-  let descripcion = data.descripcion;
-  let precio = data.precio;
-  let url_fotografia = data.url_fotografia;
-  let usuario_id = data.usuario_id;
-  let anuncio_id = data.anuncio_id;
+  let titulo = req.body.titulo;
+  let descripcion = req.body.descripcion;
+  let precio = req.body.precio;
+  let usuario_id = req.body.usuario_id;
+  let anuncio_id = req.body.anuncio_id;
+
+  if (req.file !== undefined) {
+    let path_multer = req.file.path;
+    let name_img = path_multer.substring(4, path_multer.length);
+    url_fotografia = "/" + "img" + "/" + name_img;
+  } else {
+    url_fotografia = "/img-no/insertada";
+    res.json({ estado: "la imagen esta indefinida" });
+  }
 
   const anuncioActivo = await pool.query(
     "UPDATE anuncio SET titulo=$1, descripcion=$2, precio=$3, url_fotografia=$4, activado=true, usuario_id=$5 WHERE anuncio_id=$6",
@@ -115,10 +128,6 @@ const editarAnuncio = async (req, res) => {
   );
 
   res.json({ estado: "anuncio editado" });
-};
-
-const uploadfoto = async (req, res) => {
-  const { img } = req.body;
 };
 
 const editAnuncioActivo = async (req, res) => {
@@ -132,7 +141,7 @@ const editAnuncioActivo = async (req, res) => {
     [activo, anuncio_id]
   );
 
-  res.json({estado: "activo actualizado"})
+  res.json(req.body.estado);
 };
 
 module.exports = {

@@ -5,8 +5,6 @@ function editProduct() {
   let descripcion = document.getElementById("Descripcion-producto");
   let Precio = document.getElementById("PP");
 
-  let foto = "url / ver / como / manejar / fotos / despues";
-
   let params = new URLSearchParams(window.location.search);
   let key = params.get("key");
 
@@ -32,25 +30,21 @@ function editProduct() {
     return;
   }
 
-  fetch("http://localhost:3000/editarAnuncio", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      data: {
-        titulo: titulo.value,
-        descripcion: descripcion.value,
-        precio: precioFloat,
-        url_fotografia: foto,
-        usuario_id: userL.usuario_id,
-        anuncio_id: key,
-      },
-      estado: "enviado",
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      window.location.href = "./tus-anuncios.html";
+  let img = document.getElementById("seleccion-file");
+  let data = new FormData();
+
+  data.append("titulo", titulo.value);
+  data.append("descripcion", descripcion.value);
+  data.append("precio", precioFloat);
+  data.append("img", img.files[0]);
+  data.append("usuario_id", userL.usuario_id);
+  data.append("anuncio_id", key);
+
+  if (true) {
+    fetch("http://127.0.0.1:3000/editarAnuncio", {
+      method: "POST",
+      body: data,
     });
+    window.location.href = "./tus-anuncios.html";
+  }
 }

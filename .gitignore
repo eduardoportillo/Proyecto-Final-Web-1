@@ -12,6 +12,7 @@
 .history
 .ionide
 
-node_modules
+Back-end/node_modules
+Back-end/img
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode

@@ -5,6 +5,11 @@
 
 }
 
+
+.img-anuncio img{
+  width: 200px;
+}
+
 .divAnuncios {
     flex-direction: column;
     justify-content: center;
@@ -15,7 +20,7 @@
     margin-bottom: 10px;
     border-radius: 4px;
     width: 300px;
-    height: 150px;
+    height: 350px;
     background-color: #1b171744;
 }
   
