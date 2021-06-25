@@ -30,6 +30,12 @@ function sendUser() {
     return;
   }
 
+  emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  if (!emailRegex.test(email.value)) {
+    error.innerHTML = "correo no cumple el formato";
+    return;
+  }
+
   if (password.value === null || password.value === "") {
     error.innerHTML = "Ingresa un password";
     return;
@@ -39,7 +45,7 @@ function sendUser() {
     error.innerHTML = "la contraseña no son iguales";
     return;
   }
-
+  
   fetch("http://localhost:3000/singup", {
     method: "POST",
     headers: {
@@ -59,7 +65,7 @@ function sendUser() {
     .then((data) => {
       if (data.estado === "exito") {
         localStorage.setItem("usuario_log",JSON.stringify(data.data))
-        window.location.href = "./market-plis.html";
+        
         return;
       }else{
         error.innerHTML ="El Usuario ya existe"

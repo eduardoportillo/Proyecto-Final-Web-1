@@ -9,7 +9,6 @@ const app = express();
 // settings
 app.use(cors());
 app.set('port', process.env.PORT || 3000);
-app.use(express.static('public'));
 
 // middlewares
 app.use(morgan('dev'));

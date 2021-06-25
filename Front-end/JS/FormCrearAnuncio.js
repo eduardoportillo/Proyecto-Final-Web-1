@@ -1,12 +1,12 @@
 
-function validate(){
-  var usr = localStorage.getItem("usuario_log");
-  if(usr){
-    window.location.href = "./market-plis.html";
-  }
+// function validate(){
+//   var usr = localStorage.getItem("usuario_log");
+//   if(usr){
+//     window.location.href = "./market-plis.html";
+//   }
 
-}
-validate()
+// }
+// validate()
 
 function sendAnuncio() {
   let userL = JSON.parse(localStorage.getItem("usuario_log"));
@@ -47,12 +47,16 @@ function sendAnuncio() {
   data.append("activado", activado);
   data.append("usuario_id", userL.usuario_id);
 
-  fetch("http://127.0.0.1:3000/crearAnuncio", {
+  if(true){
+    fetch("http://127.0.0.1:3000/crearAnuncio", {
     method: "POST",
     body: data,
   })
     .then((res) => res.json())
     .then((data) => {
-      window.location.href = "./market-plis.html";
+      
     });
+    window.location.href = "./market-plis.html";
+  }
+  
 }
